@@ -21,22 +21,11 @@ class MainTabController: UITabBarController {
     
     func configureViewControllers() {
         view.backgroundColor = .white
-
-        if #available(iOS 13.0, *) {
-            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.configureWithDefaultBackground()
-            tabBarAppearance.backgroundColor = UIColor(named: "AccentColor")
-            UITabBar.appearance().standardAppearance = tabBarAppearance
-
-            if #available(iOS 15.0, *) {
-                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-            }
-        }
-
         
+        let layout = UICollectionViewFlowLayout()
         let feed = templeteNavigationController(unselecteImage: UIImage(named: "home_unselected")!,
                                                 selectedImage: UIImage(named: "home_selected")!,
-                                                rootViewController: FeedController())
+                                                rootViewController: FeedController(collectionViewLayout: layout))
         
         let search = templeteNavigationController(unselecteImage: UIImage(named: "search_unselected")!,
                                                   selectedImage: UIImage(named: "search_selected")!,
