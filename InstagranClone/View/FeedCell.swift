@@ -36,7 +36,7 @@ class FeedCell: UICollectionViewCell {
         iv.clipsToBounds = true
         iv.isUserInteractionEnabled = true
         iv.backgroundColor = .systemPurple
-        iv.image = UIImage(named: "venom-7")!
+        iv.image = UIImage(named: "iron_man")!
         return iv
     }()
     
