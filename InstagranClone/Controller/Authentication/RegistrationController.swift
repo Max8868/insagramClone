@@ -11,11 +11,14 @@ class RegistrationController: UIViewController {
     
     //MARK: - Properties
     
+    private var viewModel = RegistrationViewModel()
+    
     private let plushPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         let image = #imageLiteral(resourceName: "plus_photo")
         button.setImage(image, for: .normal)
         button.tintColor = .white
+        button.addTarget(self, action: #selector(handleProfilePhotoSelect), for: .touchUpInside)
         return button
     }()
     
@@ -23,7 +26,10 @@ class RegistrationController: UIViewController {
     private let passwordTextField = CustonTextField(placeholder: "Password", type: .password)
     private let fullNameTextField = CustonTextField(placeholder: "FullName", type: .fullName)
     private let usernameTextField = CustonTextField(placeholder: "Username", type: .username)
-    private let signUpButton = CustonButton(title: "Sign Up")
+    private let signUpButton: CustonButton = {
+        let button = CustonButton(title: "Sign Up")
+        return button
+    }()
     
     private let alreadyHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
@@ -35,14 +41,33 @@ class RegistrationController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureUI()
-        
+        configureNotificationObservers()
     }
-
+    
     // MARK: - Actions
     @objc private func handleShowLogin(sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else if sender == passwordTextField {
+            viewModel.password = sender.text
+        } else if sender == fullNameTextField {
+            viewModel.fullname = sender.text
+        } else if sender == usernameTextField {
+            viewModel.username = sender.text
+        }
+        updateForm()
+    }
+    
+    @objc func handleProfilePhotoSelect() {
+        let picker =  UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
     }
     
     // MARK: - Helpers
@@ -72,6 +97,35 @@ class RegistrationController: UIViewController {
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
     
+    func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange(sender:)), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange(sender:)), for: .editingChanged)
+        fullNameTextField.addTarget(self, action: #selector(textDidChange(sender:)), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textDidChange(sender:)), for: .editingChanged)
+    }
     
-    
+}
+// MARK: - FormViewModel
+extension RegistrationController: FormViewModel {
+    func updateForm() {
+        signUpButton.backgroundColor = viewModel.buttonBackgroundColor
+        signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        signUpButton.isEnabled = viewModel.formIsValid
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        
+        plushPhotoButton.layer.cornerRadius = plushPhotoButton.frame.width / 2
+        plushPhotoButton.layer.masksToBounds = true
+        plushPhotoButton.layer.borderColor = UIColor.white.cgColor
+        plushPhotoButton.layer.borderWidth = 2
+        plushPhotoButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        self.dismiss(animated: true, completion: nil)
+    }
 }

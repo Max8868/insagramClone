@@ -9,7 +9,7 @@ import UIKit
 
 class LoginController: UIViewController {
     
-    private let viewModel = LoginViewModel()
+    private var viewModel = LoginViewModel()
     
     //MARK: - Properties
     private let iconImage: UIImageView = {
@@ -54,12 +54,14 @@ class LoginController: UIViewController {
     }
     @objc private func textDidChange(sender: UITextField) {
         if sender == emailTextField {
-            print(sender.text)
+            viewModel.email = sender.text
         }
         if sender == passwordTextField {
-            print(sender.text)
+            viewModel.password = sender.text
         }
+        updateForm()
     }
+    
     // MARK: - Helpers
     func configureUI() {
         configureGradientLayer()
@@ -94,5 +96,15 @@ class LoginController: UIViewController {
         emailTextField.addTarget(self, action: #selector(textDidChange(sender:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange(sender:)), for: .editingChanged)
     }
+}
+
+// MARK: - FormViewModel
+extension LoginController: FormViewModel {
+    func updateForm() {
+        loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        loginButton.isEnabled = viewModel.formIsValid
+    }
+    
 }
  
