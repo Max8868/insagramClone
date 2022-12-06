@@ -41,8 +41,6 @@ class CustonButton: UIButton {
     }
     
     override func sendAction(_ action: Selector, to target: Any?, for event: UIEvent?) {
-        debugPrint("Am here")
-        //do all your animation stuff here
         super.sendAction(action, to: target, for: event)
     }
     
