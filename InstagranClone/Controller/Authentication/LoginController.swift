@@ -22,7 +22,8 @@ class LoginController: UIViewController {
     private let passwordTextField = CustonTextField(placeholder: "Password", type: .password)
     
     private let loginButton: UIButton = {
-        let button = CustonButton(title: "Sign Up")
+        let button = CustonButton(title: "Log In")
+        button.addTarget(self, action: #selector(handleLogin(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -48,10 +49,22 @@ class LoginController: UIViewController {
     
     // MARK: - Actions
     
+    @objc private func handleLogin(sender: UIButton) {
+        guard let email = emailTextField.text?.lowercased() else { return }
+        guard let password = passwordTextField.text else { return }
+        AuthServices.logUserIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("Debug: Failed to log in user in \(error.localizedDescription)")
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @objc private func handleShowSiginUp(sender: UIButton) {
         let controller = RegistrationController()
         navigationController?.pushViewController(controller, animated: true)
     }
+    
     @objc private func textDidChange(sender: UITextField) {
         if sender == emailTextField {
             viewModel.email = sender.text
