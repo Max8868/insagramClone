@@ -41,6 +41,8 @@
 		30D1E39A29396F38008FC2FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30D1E39929396F38008FC2FD /* GoogleService-Info.plist */; };
 		30E9A529283EF34F0054405B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E9A528283EF34F0054405B /* LoginController.swift */; };
 		30E9A52B283EF3680054405B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E9A52A283EF3680054405B /* RegistrationController.swift */; };
+		30F552B72940A58B00763B26 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F552B62940A58B00763B26 /* ProfileCell.swift */; };
+		30F552B92940A5A100763B26 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F552B82940A5A100763B26 /* ProfileHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		30D1E39929396F38008FC2FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30E9A528283EF34F0054405B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		30E9A52A283EF3680054405B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		30F552B62940A58B00763B26 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		30F552B82940A5A100763B26 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,7 @@
 				30349EFC282B235900BBF6F8 /* FeedCell.swift */,
 				30216B2F2933C73C00C62EDF /* CustonTextField.swift */,
 				30216B312933DA5700C62EDF /* CustonButton.swift */,
+				30F552BA2940A5AA00763B26 /* Profile */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,6 +252,15 @@
 				30E9A52A283EF3680054405B /* RegistrationController.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		30F552BA2940A5AA00763B26 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				30F552B62940A58B00763B26 /* ProfileCell.swift */,
+				30F552B82940A5A100763B26 /* ProfileHeader.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +421,7 @@
 				30216B342934C88700C62EDF /* AuthenticationViewModel.swift in Sources */,
 				3025B9AA2820A2160090E368 /* ImageSelectorController.swift in Sources */,
 				3025B9A82820A2040090E368 /* SearchController.swift in Sources */,
+				30F552B92940A5A100763B26 /* ProfileHeader.swift in Sources */,
 				3025B96A28209C5F0090E368 /* AppDelegate.swift in Sources */,
 				30216B302933C73C00C62EDF /* CustonTextField.swift in Sources */,
 				3025B9A62820A1E70090E368 /* FeedController.swift in Sources */,
@@ -414,6 +429,7 @@
 				3025B9A42820A0160090E368 /* MainTabController.swift in Sources */,
 				3025B9AC2820A2290090E368 /* NotificationsController.swift in Sources */,
 				30216B322933DA5700C62EDF /* CustonButton.swift in Sources */,
+				30F552B72940A58B00763B26 /* ProfileCell.swift in Sources */,
 				3089C7DE293E0E4C00ADCC7C /* AuthServices.swift in Sources */,
 				30349EFF282B240E00BBF6F8 /* Extensions.swift in Sources */,
 				3025B96C28209C5F0090E368 /* SceneDelegate.swift in Sources */,
