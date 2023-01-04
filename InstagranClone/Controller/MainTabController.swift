@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabController: UITabBarController {
     
@@ -15,6 +16,30 @@ class MainTabController: UITabBarController {
         super.viewDidLoad()
         configureViewControllers()
         configureNavTabBarColor()
+        checkIfUserIsLoggedIn()
+//        logout()
+    }
+    
+    // MARK: - API
+    
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let controller = LoginController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func logout() {
+        
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("Debug: Failed to signOut \(error.localizedDescription)")
+        }
     }
     
     // MARK: - Helpers
@@ -39,9 +64,10 @@ class MainTabController: UITabBarController {
                                                          selectedImage: UIImage(named: "like_selected")!,
                                                          rootViewController: NotificationsController())
         
+        let profileLayout = UICollectionViewFlowLayout()
         let profile = templeteNavigationController(unselecteImage: UIImage(named: "profile_unselected")!,
                                                    selectedImage: UIImage(named: "profile_selected")!,
-                                                   rootViewController: ProfileController())
+                                                   rootViewController: ProfileController(collectionViewLayout: profileLayout))
         
         viewControllers = [feed, search, imageSelector, notifications, profile]
         tabBar.tintColor = .black
