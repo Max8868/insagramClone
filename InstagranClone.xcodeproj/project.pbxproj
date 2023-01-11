@@ -11,6 +11,7 @@
 		300E5BA0296F0A3D002155F8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5B9F296F0A3D002155F8 /* Constants.swift */; };
 		300E5BA2296F0C60002155F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA1296F0C60002155F8 /* User.swift */; };
 		300E5BA4296F12B9002155F8 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA3296F12B9002155F8 /* ProfileHeaderViewModel.swift */; };
+		300E5BA6296F29B3002155F8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA5296F29B3002155F8 /* UserCell.swift */; };
 		30216B302933C73C00C62EDF /* CustonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B2F2933C73C00C62EDF /* CustonTextField.swift */; };
 		30216B322933DA5700C62EDF /* CustonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B312933DA5700C62EDF /* CustonButton.swift */; };
 		30216B342934C88700C62EDF /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B332934C88700C62EDF /* AuthenticationViewModel.swift */; };
@@ -71,6 +72,7 @@
 		300E5B9F296F0A3D002155F8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		300E5BA1296F0C60002155F8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = InstagranClone/Utils/User.swift; sourceTree = SOURCE_ROOT; };
 		300E5BA3296F12B9002155F8 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		300E5BA5296F29B3002155F8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		30216B2F2933C73C00C62EDF /* CustonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonTextField.swift; sourceTree = "<group>"; };
 		30216B312933DA5700C62EDF /* CustonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonButton.swift; sourceTree = "<group>"; };
 		30216B332934C88700C62EDF /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				30216B2F2933C73C00C62EDF /* CustonTextField.swift */,
 				30216B312933DA5700C62EDF /* CustonButton.swift */,
 				30F552BA2940A5AA00763B26 /* Profile */,
+				300E5BA5296F29B3002155F8 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				30F552B92940A5A100763B26 /* ProfileHeader.swift in Sources */,
 				3025B96A28209C5F0090E368 /* AppDelegate.swift in Sources */,
 				30216B302933C73C00C62EDF /* CustonTextField.swift in Sources */,
+				300E5BA6296F29B3002155F8 /* UserCell.swift in Sources */,
 				3025B9A62820A1E70090E368 /* FeedController.swift in Sources */,
 				3025B9AE2820A2380090E368 /* ProfileController.swift in Sources */,
 				3025B9A42820A0160090E368 /* MainTabController.swift in Sources */,
