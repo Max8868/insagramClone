@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300E5B9E296F0A04002155F8 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5B9D296F0A04002155F8 /* UserService.swift */; };
+		300E5BA0296F0A3D002155F8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5B9F296F0A3D002155F8 /* Constants.swift */; };
+		300E5BA2296F0C60002155F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA1296F0C60002155F8 /* User.swift */; };
 		30216B302933C73C00C62EDF /* CustonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B2F2933C73C00C62EDF /* CustonTextField.swift */; };
 		30216B322933DA5700C62EDF /* CustonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B312933DA5700C62EDF /* CustonButton.swift */; };
 		30216B342934C88700C62EDF /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B332934C88700C62EDF /* AuthenticationViewModel.swift */; };
@@ -63,6 +66,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		300E5B9D296F0A04002155F8 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		300E5B9F296F0A3D002155F8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		300E5BA1296F0C60002155F8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = InstagranClone/Utils/User.swift; sourceTree = SOURCE_ROOT; };
 		30216B2F2933C73C00C62EDF /* CustonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonTextField.swift; sourceTree = "<group>"; };
 		30216B312933DA5700C62EDF /* CustonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonButton.swift; sourceTree = "<group>"; };
 		30216B332934C88700C62EDF /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				30349EFE282B240E00BBF6F8 /* Extensions.swift */,
+				300E5B9F296F0A3D002155F8 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -212,6 +219,7 @@
 			children = (
 				3089C7DB293E0E3A00ADCC7C /* ImageUploader.swift */,
 				3089C7DD293E0E4C00ADCC7C /* AuthServices.swift */,
+				300E5B9D296F0A04002155F8 /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -241,6 +249,7 @@
 		3025B9A128209F350090E368 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				300E5BA1296F0C60002155F8 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3025B96E28209C5F0090E368 /* ViewController.swift in Sources */,
+				300E5BA0296F0A3D002155F8 /* Constants.swift in Sources */,
 				30E9A52B283EF3680054405B /* RegistrationController.swift in Sources */,
 				3089C7DC293E0E3A00ADCC7C /* ImageUploader.swift in Sources */,
 				30E9A529283EF34F0054405B /* LoginController.swift in Sources */,
@@ -427,12 +437,14 @@
 				3025B9A62820A1E70090E368 /* FeedController.swift in Sources */,
 				3025B9AE2820A2380090E368 /* ProfileController.swift in Sources */,
 				3025B9A42820A0160090E368 /* MainTabController.swift in Sources */,
+				300E5B9E296F0A04002155F8 /* UserService.swift in Sources */,
 				3025B9AC2820A2290090E368 /* NotificationsController.swift in Sources */,
 				30216B322933DA5700C62EDF /* CustonButton.swift in Sources */,
 				30F552B72940A58B00763B26 /* ProfileCell.swift in Sources */,
 				3089C7DE293E0E4C00ADCC7C /* AuthServices.swift in Sources */,
 				30349EFF282B240E00BBF6F8 /* Extensions.swift in Sources */,
 				3025B96C28209C5F0090E368 /* SceneDelegate.swift in Sources */,
+				300E5BA2296F0C60002155F8 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
