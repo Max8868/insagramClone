@@ -7,29 +7,37 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class UserCell: UITableViewCell {
     
     //MARK: - Properties
+    var user: User? {
+        didSet {
+            usernameLabel.text = user?.username
+            fullNamelLabel.text = user?.fullname
+            if let imgUrl = user?.profileImageUrl {
+                profileImageView.sd_setImage(with: URL(string: imgUrl))
+            }
+        } 
+    }
+    
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.image = UIImage(named: "venom-7")
         return iv
     }()
     
     private let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "venon"
         return label
     }()
     
     private let fullNamelLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "Eddie Brock"
         label.textColor = .lightGray
         return label
     }()
