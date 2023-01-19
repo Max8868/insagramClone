@@ -12,13 +12,9 @@ import SDWebImage
 class UserCell: UITableViewCell {
     
     //MARK: - Properties
-    var user: User? {
+    var viewModel: UserCellViewModel? {
         didSet {
-            usernameLabel.text = user?.username
-            fullNamelLabel.text = user?.fullname
-            if let imgUrl = user?.profileImageUrl {
-                profileImageView.sd_setImage(with: URL(string: imgUrl))
-            }
+            configure()
         } 
     }
     
@@ -63,4 +59,12 @@ class UserCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Helpers
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        usernameLabel.text = viewModel.username
+        fullNamelLabel.text = viewModel.fullname
+    }
 }
