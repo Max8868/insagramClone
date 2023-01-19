@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol AuthnticationDelegate: AnyObject {
+    func authenticationDidComplete()
+}
+
 class LoginController: UIViewController {
     
     private var viewModel = LoginViewModel()
+    weak var delegate: AuthnticationDelegate?
     
     //MARK: - Properties
     private let iconImage: UIImageView = {
@@ -56,12 +61,14 @@ class LoginController: UIViewController {
             if let error = error {
                 print("Debug: Failed to log in user in \(error.localizedDescription)")
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationDidComplete()
+            
         }
     }
     
     @objc private func handleShowSiginUp(sender: UIButton) {
         let controller = RegistrationController()
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
     
