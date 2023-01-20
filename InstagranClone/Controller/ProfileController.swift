@@ -69,6 +69,7 @@ extension ProfileController {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                      withReuseIdentifier: headerIdentifier,
                                                                      for: indexPath) as! ProfileHeader
+        header.delegate = self
         header.viewModel = ProfileHeaderViewModel(user: user)
         
         return header
@@ -100,5 +101,21 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 240)
+    }
+}
+
+//MARK: - ProfileHeaderDelegate
+extension ProfileController: ProfileHeaderDelegate {
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User) {
+        
+        if user.isCurrentUser {
+            print("Debug: Show edit profile here... ")
+        } else if user.isFollowed {
+            print("Debug: Handle unfollow user here... ")
+        } else {
+            UserService.followUser(uid: user.uid) { error in
+                print("Debug: Did follow user. Update UI now...")
+            }
+        }
     }
 }
