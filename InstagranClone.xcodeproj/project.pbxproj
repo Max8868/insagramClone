@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		300E5B9E296F0A04002155F8 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5B9D296F0A04002155F8 /* UserService.swift */; };
 		300E5BA0296F0A3D002155F8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5B9F296F0A3D002155F8 /* Constants.swift */; };
-		300E5BA2296F0C60002155F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA1296F0C60002155F8 /* User.swift */; };
 		300E5BA4296F12B9002155F8 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA3296F12B9002155F8 /* ProfileHeaderViewModel.swift */; };
 		300E5BA6296F29B3002155F8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA5296F29B3002155F8 /* UserCell.swift */; };
 		300E5BA829799ED4002155F8 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA729799ED4002155F8 /* UserCellViewModel.swift */; };
+		300E5BAB297AE7A1002155F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BAA297AE7A1002155F8 /* User.swift */; };
 		30216B302933C73C00C62EDF /* CustonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B2F2933C73C00C62EDF /* CustonTextField.swift */; };
 		30216B322933DA5700C62EDF /* CustonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B312933DA5700C62EDF /* CustonButton.swift */; };
 		30216B342934C88700C62EDF /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B332934C88700C62EDF /* AuthenticationViewModel.swift */; };
@@ -71,10 +71,10 @@
 /* Begin PBXFileReference section */
 		300E5B9D296F0A04002155F8 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		300E5B9F296F0A3D002155F8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		300E5BA1296F0C60002155F8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = InstagranClone/Utils/User.swift; sourceTree = SOURCE_ROOT; };
 		300E5BA3296F12B9002155F8 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		300E5BA5296F29B3002155F8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		300E5BA729799ED4002155F8 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
+		300E5BAA297AE7A1002155F8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30216B2F2933C73C00C62EDF /* CustonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonTextField.swift; sourceTree = "<group>"; };
 		30216B312933DA5700C62EDF /* CustonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonButton.swift; sourceTree = "<group>"; };
 		30216B332934C88700C62EDF /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +142,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		300E5BA9297AE480002155F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				300E5BAA297AE7A1002155F8 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3025B95D28209C5F0090E368 = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +173,7 @@
 		3025B96828209C5F0090E368 /* InstagranClone */ = {
 			isa = PBXGroup;
 			children = (
-				3025B9A128209F350090E368 /* Model */,
+				300E5BA9297AE480002155F8 /* Model */,
 				3025B99928209E890090E368 /* View */,
 				3025B9A028209F330090E368 /* ViewModel */,
 				3025B99F28209F300090E368 /* Controller */,
@@ -253,14 +261,6 @@
 				300E5BA729799ED4002155F8 /* UserCellViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		3025B9A128209F350090E368 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				300E5BA1296F0C60002155F8 /* User.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		30E9A527283EF3230054405B /* Authentication */ = {
@@ -436,6 +436,7 @@
 				30E9A52B283EF3680054405B /* RegistrationController.swift in Sources */,
 				3089C7DC293E0E3A00ADCC7C /* ImageUploader.swift in Sources */,
 				30E9A529283EF34F0054405B /* LoginController.swift in Sources */,
+				300E5BAB297AE7A1002155F8 /* User.swift in Sources */,
 				300E5BA4296F12B9002155F8 /* ProfileHeaderViewModel.swift in Sources */,
 				30349EFD282B235900BBF6F8 /* FeedCell.swift in Sources */,
 				30216B342934C88700C62EDF /* AuthenticationViewModel.swift in Sources */,
@@ -456,7 +457,6 @@
 				3089C7DE293E0E4C00ADCC7C /* AuthServices.swift in Sources */,
 				30349EFF282B240E00BBF6F8 /* Extensions.swift in Sources */,
 				3025B96C28209C5F0090E368 /* SceneDelegate.swift in Sources */,
-				300E5BA2296F0C60002155F8 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
