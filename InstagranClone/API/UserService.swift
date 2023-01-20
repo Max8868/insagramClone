@@ -11,6 +11,11 @@ typealias FirestoneCompetion = (Error?) -> Void
 
 struct UserService {
     
+    enum UserPaths: String {
+        case userFollowing = "user-following"
+        case userFollowers = "user-followers"
+    }
+    
     static func fetchUser(completion: @escaping(User) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         COLLECTION_USERS.document(uid).getDocument { snapshot, error in
@@ -30,15 +35,24 @@ struct UserService {
     
     static func followUser(uid: String, completion: @escaping(FirestoneCompetion)) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).setData([:]) { error in
-            COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUid).setData([:], completion: completion)
+        COLLECTION_FOLLOWING.document(currentUid).collection(UserPaths.userFollowing.rawValue).document(uid).setData([:]) { error in
+            COLLECTION_FOLLOWERS.document(uid).collection(UserPaths.userFollowers.rawValue).document(currentUid).setData([:], completion: completion)
         }
     }
     
     static func unfollowUser(uid: String, completion: @escaping(FirestoneCompetion)) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).delete { error in
-            COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUid).delete(completion: completion)
+        COLLECTION_FOLLOWING.document(currentUid).collection(UserPaths.userFollowing.rawValue).document(uid).delete { error in
+            COLLECTION_FOLLOWERS.document(uid).collection(UserPaths.userFollowers.rawValue).document(currentUid).delete(completion: completion)
+        }
+    }
+    
+    static func checkIfUserIsFollowed(uid: String, completion: @escaping(Bool) -> Void) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        COLLECTION_FOLLOWING.document(currentUid).collection(UserPaths.userFollowing.rawValue).document(uid).getDocument { snapshot, error in
+            guard let isfollowed = snapshot?.exists else { return }
+            completion(isfollowed)
         }
     }
 }
