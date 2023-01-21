@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol AuthnticationDelegate: AnyObject {
+protocol AuthenticationDelegate: AnyObject {
     func authenticationDidComplete()
 }
 
 class LoginController: UIViewController {
     
     private var viewModel = LoginViewModel()
-    weak var delegate: AuthnticationDelegate?
+    weak var delegate: AuthenticationDelegate?
     
     //MARK: - Properties
     private let iconImage: UIImageView = {
