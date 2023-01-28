@@ -35,6 +35,8 @@
 		30349EFF282B240E00BBF6F8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30349EFE282B240E00BBF6F8 /* Extensions.swift */; };
 		3089C7DC293E0E3A00ADCC7C /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089C7DB293E0E3A00ADCC7C /* ImageUploader.swift */; };
 		3089C7DE293E0E4C00ADCC7C /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089C7DD293E0E4C00ADCC7C /* AuthServices.swift */; };
+		30BB826E2982DFE300B84F63 /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB826D2982DFE300B84F63 /* UploadPostController.swift */; };
+		30BB82702983227C00B84F63 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB826F2983227C00B84F63 /* InputTextView.swift */; };
 		30D1E38429396857008FC2FD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 30D1E38329396857008FC2FD /* FirebaseAuth */; };
 		30D1E38629396857008FC2FD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 30D1E38529396857008FC2FD /* FirebaseDatabase */; };
 		30D1E38829396857008FC2FD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 30D1E38729396857008FC2FD /* FirebaseFirestore */; };
@@ -101,6 +103,8 @@
 		30349EFE282B240E00BBF6F8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3089C7DB293E0E3A00ADCC7C /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		3089C7DD293E0E4C00ADCC7C /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		30BB826D2982DFE300B84F63 /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
+		30BB826F2983227C00B84F63 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		30D1E39929396F38008FC2FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30E9A528283EF34F0054405B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		30E9A52A283EF3680054405B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				30216B312933DA5700C62EDF /* CustonButton.swift */,
 				30F552BA2940A5AA00763B26 /* Profile */,
 				300E5BA5296F29B3002155F8 /* UserCell.swift */,
+				30BB826F2983227C00B84F63 /* InputTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				3025B9A92820A2160090E368 /* ImageSelectorController.swift */,
 				3025B9AB2820A2290090E368 /* NotificationsController.swift */,
 				3025B9AD2820A2380090E368 /* ProfileController.swift */,
+				30BB826D2982DFE300B84F63 /* UploadPostController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -438,12 +444,14 @@
 				30E9A529283EF34F0054405B /* LoginController.swift in Sources */,
 				300E5BAB297AE7A1002155F8 /* User.swift in Sources */,
 				300E5BA4296F12B9002155F8 /* ProfileHeaderViewModel.swift in Sources */,
+				30BB826E2982DFE300B84F63 /* UploadPostController.swift in Sources */,
 				30349EFD282B235900BBF6F8 /* FeedCell.swift in Sources */,
 				30216B342934C88700C62EDF /* AuthenticationViewModel.swift in Sources */,
 				3025B9AA2820A2160090E368 /* ImageSelectorController.swift in Sources */,
 				300E5BA829799ED4002155F8 /* UserCellViewModel.swift in Sources */,
 				3025B9A82820A2040090E368 /* SearchController.swift in Sources */,
 				30F552B92940A5A100763B26 /* ProfileHeader.swift in Sources */,
+				30BB82702983227C00B84F63 /* InputTextView.swift in Sources */,
 				3025B96A28209C5F0090E368 /* AppDelegate.swift in Sources */,
 				30216B302933C73C00C62EDF /* CustonTextField.swift in Sources */,
 				300E5BA6296F29B3002155F8 /* UserCell.swift in Sources */,
