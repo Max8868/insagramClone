@@ -20,17 +20,18 @@ class UploadPostController: UIViewController {
         return iv
     }()
     
-    private let captionTextView: UITextView = {
-        let tv = UITextView()
-        
+    private lazy var captionTextView: InputTextView = {
+        let tv = InputTextView()
+        tv.placeholderText = "Enter caption"
+        tv.font = UIFont.systemFont(ofSize: 16)
+        tv.delegate = self
         return tv
     }()
     
-    private let charactereCount: UILabel = {
+    private let charactereCountLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "0/100"
         return label
     }()
     
@@ -39,6 +40,7 @@ class UploadPostController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+//        captionTextView.delegate = self
     }
     
     // MARK: - Actions
@@ -49,6 +51,12 @@ class UploadPostController: UIViewController {
     
     @objc func didTapDone(sender: UIButton) {
         print("Debug: Share post here... ")
+    }
+    
+    func checkMaxLength(_ textView: UITextView, maxLength: Int) {
+        if (textView.text.count) > maxLength {
+            textView.deleteBackward()
+        }
     }
     
     // MARK: - Helpers
@@ -78,9 +86,19 @@ class UploadPostController: UIViewController {
                                paddingRight: 12,
                                height: 64)
         
-        view.addSubview(charactereCount)
-        charactereCount.anchor(bottom: captionTextView.bottomAnchor, right: view.rightAnchor, paddingRight: 12)
+        view.addSubview(charactereCountLabel)
+        charactereCountLabel.anchor(bottom: captionTextView.bottomAnchor, right: view.rightAnchor, paddingRight: 12)
     }
     
     
+}
+
+// MARK: - UITextViewDelegate
+
+extension UploadPostController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        checkMaxLength(textView, maxLength: 100)
+        let count = textView.text.count
+        charactereCountLabel.text = "\(count)/100"
+    }
 }
