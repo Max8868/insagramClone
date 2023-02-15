@@ -13,6 +13,7 @@
 		300E5BA6296F29B3002155F8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA5296F29B3002155F8 /* UserCell.swift */; };
 		300E5BA829799ED4002155F8 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BA729799ED4002155F8 /* UserCellViewModel.swift */; };
 		300E5BAB297AE7A1002155F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E5BAA297AE7A1002155F8 /* User.swift */; };
+		301169F3299D9D84000DB350 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301169F2299D9D84000DB350 /* Post.swift */; };
 		30216B302933C73C00C62EDF /* CustonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B2F2933C73C00C62EDF /* CustonTextField.swift */; };
 		30216B322933DA5700C62EDF /* CustonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B312933DA5700C62EDF /* CustonButton.swift */; };
 		30216B342934C88700C62EDF /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30216B332934C88700C62EDF /* AuthenticationViewModel.swift */; };
@@ -78,6 +79,7 @@
 		300E5BA5296F29B3002155F8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		300E5BA729799ED4002155F8 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		300E5BAA297AE7A1002155F8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		301169F2299D9D84000DB350 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		30216B2F2933C73C00C62EDF /* CustonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonTextField.swift; sourceTree = "<group>"; };
 		30216B312933DA5700C62EDF /* CustonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonButton.swift; sourceTree = "<group>"; };
 		30216B332934C88700C62EDF /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				300E5BAA297AE7A1002155F8 /* User.swift */,
+				301169F2299D9D84000DB350 /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				300E5BA4296F12B9002155F8 /* ProfileHeaderViewModel.swift in Sources */,
 				30BB826E2982DFE300B84F63 /* UploadPostController.swift in Sources */,
 				30349EFD282B235900BBF6F8 /* FeedCell.swift in Sources */,
+				301169F3299D9D84000DB350 /* Post.swift in Sources */,
 				30216B342934C88700C62EDF /* AuthenticationViewModel.swift in Sources */,
 				3025B9AA2820A2160090E368 /* ImageSelectorController.swift in Sources */,
 				300E5BA829799ED4002155F8 /* UserCellViewModel.swift in Sources */,
