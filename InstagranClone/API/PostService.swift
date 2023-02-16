@@ -12,7 +12,7 @@ import UIKit
 
 struct PostService {
     
-    static func uploadPost(caption: String, image: UIImage, completion: @escaping(FirestoneCompetion)) {
+    static func uploadPost(caption: String, image: UIImage, user: User, completion: @escaping(FirestoneCompetion)) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         ImageUploader.uploadImage(image: image) { imagUrl in
@@ -20,7 +20,9 @@ struct PostService {
                         "timestamp": Timestamp(date: Date()),
                         "likes": 0,
                         "imageUrl": imagUrl,
-                        "ownerUid": uid] as [String: Any]
+                        "ownerUid": uid,
+                        "ownerImageUrl": user.profileImageUrl,
+                        "ownerUsername": user.username] as [String: Any]
             COLLECTION_POSTS.addDocument(data: data, completion: completion)
         }
     }
