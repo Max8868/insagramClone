@@ -13,8 +13,8 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Lifecycle
     private var posts = [Post]()
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureUI()
         fetchPosts()
     }
@@ -35,7 +35,7 @@ class FeedController: UICollectionViewController {
     }
     
     @objc
-    private func handleRefresh(sender: UIRefreshControl) {
+    func handleRefresh(sender: UIRefreshControl = UIRefreshControl()) {
         posts.removeAll()
         fetchPosts()
     }

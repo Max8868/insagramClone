@@ -25,6 +25,7 @@ class MainTabController: UITabBarController {
         configureNavTabBarColor()
         checkIfUserIsLoggedIn()
         fetchUser()
+        view.backgroundColor = .white
     }
     
     // MARK: - API
@@ -175,5 +176,8 @@ extension MainTabController: UploadPostControllerDelegate {
         selectedIndex = 0
         controller.dismiss(animated: true, completion: nil)
         
+        guard let feedNav = viewControllers?.first as? UINavigationController else { return }
+        guard let feed = feedNav.viewControllers.first as? FeedController else { return }
+        feed.handleRefresh()
     }
 }
