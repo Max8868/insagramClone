@@ -13,6 +13,8 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Lifecycle
     private var posts = [Post]()
+    var post: Post?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI()
@@ -42,6 +44,8 @@ class FeedController: UICollectionViewController {
     
     // MARK: - API
     func fetchPosts() {
+        guard post == nil else { return }
+        
         PostService.fetchPosts { posts in
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
@@ -54,10 +58,12 @@ class FeedController: UICollectionViewController {
     func configureUI() {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(handleLogout(sender:)))
+        if post == nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout",
+                                                               style: .plain,
+                                                               target: self,
+                                                               action: #selector(handleLogout(sender:)))
+        }
         navigationItem.title = "Feed"
         
         let refresher = UIRefreshControl()
@@ -72,12 +78,18 @@ class FeedController: UICollectionViewController {
 extension FeedController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
+        return post == nil ? posts.count : 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
-        cell.viewModel = PostViewModel(posts: posts[indexPath.row])
+        
+        if let wrapPost = post {
+            cell.viewModel = PostViewModel(post: wrapPost)
+        } else {
+            cell.viewModel = PostViewModel(post: posts[indexPath.row])
+        }
+        
         return cell
     }
     
