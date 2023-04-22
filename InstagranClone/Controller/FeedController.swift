@@ -12,10 +12,13 @@ private let reuseIdentifier = "Cell"
 class FeedController: UICollectionViewController {
     
     // MARK: - Lifecycle
+    private var posts = [Post]()
+    var post: Post?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureUI()
+        fetchPosts()
     }
     
     // MARK: - Actions
@@ -33,16 +36,39 @@ class FeedController: UICollectionViewController {
         }
     }
     
+    @objc
+    func handleRefresh(sender: UIRefreshControl = UIRefreshControl()) {
+        posts.removeAll()
+        fetchPosts()
+    }
+    
+    // MARK: - API
+    func fetchPosts() {
+        guard post == nil else { return }
+        
+        PostService.fetchPosts { posts in
+            self.posts = posts
+            self.collectionView.refreshControl?.endRefreshing()
+            self.collectionView.reloadData()
+        }
+    }
+    
     // MARK: - Helpers
 
     func configureUI() {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(handleLogout(sender:)))
+        if post == nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout",
+                                                               style: .plain,
+                                                               target: self,
+                                                               action: #selector(handleLogout(sender:)))
+        }
         navigationItem.title = "Feed"
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(handleRefresh(sender:)), for: .valueChanged)
+        collectionView.refreshControl = refresher
     }
     
 }
@@ -52,11 +78,18 @@ class FeedController: UICollectionViewController {
 extension FeedController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return post == nil ? posts.count : 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
+        
+        if let wrapPost = post {
+            cell.viewModel = PostViewModel(post: wrapPost)
+        } else {
+            cell.viewModel = PostViewModel(post: posts[indexPath.row])
+        }
+        
         return cell
     }
     

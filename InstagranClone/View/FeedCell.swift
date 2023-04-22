@@ -11,22 +11,24 @@ class FeedCell: UICollectionViewCell {
     
     // MARK: - Proprities
     
+    var viewModel: PostViewModel? {
+        didSet { configure() }
+    }
+    
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.isUserInteractionEnabled = true
         iv.backgroundColor = .systemPurple
-        iv.image = UIImage(named: "venom-7")!
         return iv
     }()
     
     private lazy var usernameButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitleColor(.black, for: .normal)
-        button.setTitle("Venon", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        button.addTarget(self, action: #selector(didTapUsername(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapUsernameButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -35,8 +37,6 @@ class FeedCell: UICollectionViewCell {
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.isUserInteractionEnabled = true
-        iv.backgroundColor = .systemPurple
-        iv.image = UIImage(named: "iron_man")!
         return iv
     }()
     
@@ -44,7 +44,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "like_unselected")!, for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapLikeButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -52,7 +52,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "comment")!, for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapCommentButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -60,20 +60,18 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "send2")!, for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapShareButton(sender:)), for: .touchUpInside)
         return button
     }()
     
     private let likeLabel: UILabel = {
         let label = UILabel()
-        label.text = "1 like"
         label.font = UIFont.boldSystemFont(ofSize: 13)
         return label
     }()
     
     private let captionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Some test caption for now..."
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -140,11 +138,35 @@ class FeedCell: UICollectionViewCell {
     // MARK: - Actions
     
     @objc
-    func didTapUsername(sender: UIButton) {
+    func didTapUsernameButton(sender: UIButton) {
         print("DEBUG: did tap username")
     }
     
-    // MARK: - Lifecycle
+    @objc
+    func didTapLikeButton(sender: UIButton) {
+        print("DEBUG: did tap like")
+    }
+    
+    @objc
+    func didTapCommentButton(sender: UIButton) {
+        print("DEBUG: did tap comment")
+    }
+    
+    @objc
+    func didTapShareButton(sender: UIButton) {
+        print("DEBUG: did tap share")
+    }
+    
+    // MARK: - Helpers
+    
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        captionLabel.text = viewModel.caption
+        postImageView.sd_setImage(with: viewModel.imageUrl)
+        profileImageView.sd_setImage(with: viewModel.userProfileImageUrl)
+        usernameButton.setTitle(viewModel.user, for: .normal)
+        likeLabel.text = viewModel.likeslabelString 
+    }
 
     func configureActionButtons() {
        let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton, shareButton])

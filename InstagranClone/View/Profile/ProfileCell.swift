@@ -9,7 +9,13 @@ import Foundation
 import UIKit
 
 class ProfileCell: UICollectionViewCell {
-    
+
+    var viewModel: PostViewModel? {
+        didSet {
+            configure()
+        }
+    }
+
     //MARK: - Properties
     private let postImage: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "venom-7"))
@@ -27,8 +33,13 @@ class ProfileCell: UICollectionViewCell {
         addSubview(postImage)
         postImage.fillSuperview()
     }
-    
+    @available (*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
+    }
+    
+    func configure() {
+        guard let viewModel else { return }
+        postImage.sd_setImage(with: viewModel.imageUrl)
     }
 }
