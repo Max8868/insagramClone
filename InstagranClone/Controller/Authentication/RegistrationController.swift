@@ -15,7 +15,7 @@ class RegistrationController: UIViewController {
     private var profileImage: UIImage?
     weak var delegate: AuthenticationDelegate?
     
-    private let plushPhotoButton: UIButton = {
+    private lazy var plushPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         let image = #imageLiteral(resourceName: "plus_photo")
         button.setImage(image, for: .normal)
@@ -28,13 +28,13 @@ class RegistrationController: UIViewController {
     private let passwordTextField = CustonTextField(placeholder: "Password", type: .password)
     private let fullNameTextField = CustonTextField(placeholder: "FullName", type: .fullName)
     private let usernameTextField = CustonTextField(placeholder: "Username", type: .username)
-    private let signUpButton: CustonButton = {
+    private lazy var signUpButton: CustonButton = {
         let button = CustonButton(title: "Sign Up")
         button.addTarget(self, action: #selector(handleSingnUp(sender:)), for: .touchUpInside)
         return button
     }()
     
-    private let alreadyHaveAccountButton: UIButton = {
+    private lazy var alreadyHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Already have an account?", secondPart: "Sign Up")
         button.addTarget(self, action: #selector(handleShowLogin(sender:)), for: .touchUpInside)

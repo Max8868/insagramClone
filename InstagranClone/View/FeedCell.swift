@@ -28,7 +28,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        button.addTarget(self, action: #selector(didTapUsername(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapUsernameButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -44,7 +44,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "like_unselected")!, for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapLikeButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -52,7 +52,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "comment")!, for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapCommentButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -60,7 +60,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "send2")!, for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapShareButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -138,8 +138,23 @@ class FeedCell: UICollectionViewCell {
     // MARK: - Actions
     
     @objc
-    func didTapUsername(sender: UIButton) {
+    func didTapUsernameButton(sender: UIButton) {
         print("DEBUG: did tap username")
+    }
+    
+    @objc
+    func didTapLikeButton(sender: UIButton) {
+        print("DEBUG: did tap like")
+    }
+    
+    @objc
+    func didTapCommentButton(sender: UIButton) {
+        print("DEBUG: did tap comment")
+    }
+    
+    @objc
+    func didTapShareButton(sender: UIButton) {
+        print("DEBUG: did tap share")
     }
     
     // MARK: - Helpers

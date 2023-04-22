@@ -17,7 +17,7 @@ class LoginController: UIViewController {
     weak var delegate: AuthenticationDelegate?
     
     //MARK: - Properties
-    private let iconImage: UIImageView = {
+    private lazy var iconImage: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
         iv.contentMode = .scaleAspectFill
         return iv
@@ -26,20 +26,20 @@ class LoginController: UIViewController {
     private let emailTextField = CustonTextField(placeholder: "Email", type: .email)
     private let passwordTextField = CustonTextField(placeholder: "Password", type: .password)
     
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = CustonButton(title: "Log In")
         button.addTarget(self, action: #selector(handleLogin(sender:)), for: .touchUpInside)
         return button
     }()
     
-    private let dontHaveAccountButton: UIButton = {
+    private lazy var dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Don't have an account?", secondPart: "Sign Up")
         button.addTarget(self, action: #selector(handleShowSiginUp(sender:)), for: .touchUpInside)
         return button
     }()
     
-    private let forgotPasswordButton: UIButton = {
+    private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Forgot your password?", secondPart: "Get help signing in")
         return button
