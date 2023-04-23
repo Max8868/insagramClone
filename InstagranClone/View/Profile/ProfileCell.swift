@@ -33,6 +33,7 @@ class ProfileCell: UICollectionViewCell {
         addSubview(postImage)
         postImage.fillSuperview()
     }
+    
     @available (*, unavailable)
     required init?(coder: NSCoder) {
         return nil

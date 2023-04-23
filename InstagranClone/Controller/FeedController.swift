@@ -89,14 +89,13 @@ extension FeedController {
         } else {
             cell.viewModel = PostViewModel(post: posts[indexPath.row])
         }
-        
+        cell.delegate = self
         return cell
     }
     
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-
 extension FeedController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -105,5 +104,13 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
         let width = view.frame.width
         let height = width + 166
         return CGSize(width: width, height: height)
+    }
+}
+
+// MARK: - FeedCellDelegate
+extension FeedController: FeedCellDelegate {
+    func cell(_ cell: FeedCell, wantsShowComments post: Post) {
+        let controller = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

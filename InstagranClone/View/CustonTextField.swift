@@ -54,7 +54,8 @@ class CustonTextField: UITextField {
                                                    attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
     }
     
+    @available (*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 }

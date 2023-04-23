@@ -31,8 +31,9 @@ class InputTextView: UITextView {
         NotificationCenter.default.addObserver(self, selector: #selector(handleTextDidChange), name: UITextView.textDidChangeNotification, object: nil)
     }
     
+    @available (*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     @objc func handleTextDidChange() {

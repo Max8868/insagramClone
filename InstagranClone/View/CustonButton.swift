@@ -36,8 +36,9 @@ class CustonButton: UIButton {
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
     }
     
+    @available (*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     override func sendAction(_ action: Selector, to target: Any?, for event: UIEvent?) {
