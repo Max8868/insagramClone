@@ -42,6 +42,7 @@
 		30BB82722985AAB300B84F63 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB82712985AAB200B84F63 /* PostService.swift */; };
 		30C94F6829F45D260022AC87 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C94F6729F45D260022AC87 /* CommentController.swift */; };
 		30C94F6A29F461100022AC87 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C94F6929F461100022AC87 /* CommentCell.swift */; };
+		30C94F6C29F5EC790022AC87 /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C94F6B29F5EC790022AC87 /* CommentInputAccessoryView.swift */; };
 		30D1E38429396857008FC2FD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 30D1E38329396857008FC2FD /* FirebaseAuth */; };
 		30D1E38629396857008FC2FD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 30D1E38529396857008FC2FD /* FirebaseDatabase */; };
 		30D1E38829396857008FC2FD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 30D1E38729396857008FC2FD /* FirebaseFirestore */; };
@@ -115,6 +116,7 @@
 		30BB82712985AAB200B84F63 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		30C94F6729F45D260022AC87 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		30C94F6929F461100022AC87 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		30C94F6B29F5EC790022AC87 /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
 		30D1E39929396F38008FC2FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30E9A528283EF34F0054405B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		30E9A52A283EF3680054405B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				300E5BA5296F29B3002155F8 /* UserCell.swift */,
 				30BB826F2983227C00B84F63 /* InputTextView.swift */,
 				30C94F6929F461100022AC87 /* CommentCell.swift */,
+				30C94F6B29F5EC790022AC87 /* CommentInputAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C94F6C29F5EC790022AC87 /* CommentInputAccessoryView.swift in Sources */,
 				301169F5299DAAA1000DB350 /* PostViewModel.swift in Sources */,
 				3025B96E28209C5F0090E368 /* ViewController.swift in Sources */,
 				300E5BA0296F0A3D002155F8 /* Constants.swift in Sources */,
