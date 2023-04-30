@@ -117,11 +117,14 @@ extension FeedController: FeedCellDelegate {
     func cell(_ cell: FeedCell, didLike post: Post) {
         cell.viewModel?.post.didLike.toggle()
         if post.didLike {
-            print("DEBUG: did tap unlike")
+            PostService.unlikePost(post: post) { _ in
+                button.setImage(UIImage(named: "like_selected")!, for: .normal)
+                cell.likeButton.tintColor = .red
+            }
         } else {
             PostService.likePost(post: post) { _ in
-                cell.likeButton.setImage(UIImage(named: "like_selected")!, for: .normal)
-                cell.likeButton.tintColor = .red
+                cell.likeButton.tintColor = .black
+                button.setImage(UIImage(named: "like_unselected")!, for: .normal)
             }
         }
     }
