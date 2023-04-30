@@ -19,7 +19,20 @@ class CommentController: UICollectionViewController {
         return cv
     }()
     
+    private let post: Post
+    
     // MARK: - Lifecycle
+    
+    init(post: Post) {
+        self.post = post
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    @available (*, unavailable)
+    required init?(coder: NSCoder) {
+        return nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -77,6 +90,13 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
 extension CommentController: CommentInputAccessoryViewDelegate {
     func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String) {
         print(comment)
-        inputView.clearCommentTextView()
+        
+        guard let tab = self.tabBarController as? MainTabController,
+              let user = tab.user else { return }
+        self.showLoader(true)
+        CommentService.uploadComment(comment: comment, postID: post.postId, user: user) { [weak self] error in
+            inputView.clearCommentTextView()
+            self?.showLoader(false)
+        }
     }
 }
