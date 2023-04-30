@@ -10,8 +10,11 @@ import UIKit
 class CommentCell: UICollectionViewCell {
      
     //MARK: - Properties
-    private var username: String = ""
-    private var commentText: String = ""
+    var viewModel: CommentViewModel? {
+        didSet {
+            configure()
+        }
+    }
       
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
@@ -23,10 +26,7 @@ class CommentCell: UICollectionViewCell {
     
     private lazy var commentLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "\(self.username) ", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSMutableAttributedString(string: self.commentText,
-                                                        attributes: [.font: UIFont.systemFont(ofSize: 14)]))
-        label.attributedText = attributedText
+        label.numberOfLines = 0
         return label
     }()
     
@@ -41,16 +41,17 @@ class CommentCell: UICollectionViewCell {
         
         addSubview(commentLabel)
         commentLabel.centerY(inView:  profileImageView, leftAnchor:  profileImageView.rightAnchor, paddingLeft: 12)
+        commentLabel.anchor(right: rightAnchor, paddingRight: 8)
     }
     
     @available (*, unavailable)
     required init?(coder: NSCoder) {
         return nil
     }
-    
-    func setup(_ comment: Comment) {
-        self.username = comment.username
-        self.commentText = comment.commentText
-        //profileImageView.sd_setImage(with: comment.profileImageUrl)
+
+    private func configure() {
+        guard let viewModel else { return }
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl )
+        commentLabel.attributedText = viewModel.commentLabelText()  
     }
 }
