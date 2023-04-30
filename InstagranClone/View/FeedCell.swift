@@ -9,6 +9,7 @@ import UIKit
 
 protocol FeedCellDelegate: AnyObject {
     func cell(_ cell: FeedCell, wantsShowComments post: Post)
+    func cell(_ cell: FeedCell, didLike post: Post)
 }
 
 class FeedCell: UICollectionViewCell {
@@ -46,7 +47,7 @@ class FeedCell: UICollectionViewCell {
         return iv
     }()
     
-    private lazy var likeButton: UIButton = {
+    lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "like_unselected")!, for: .normal)
         button.tintColor = .black
@@ -54,7 +55,7 @@ class FeedCell: UICollectionViewCell {
         return button
     }()
     
-    private lazy var commentButton: UIButton = {
+    lazy var commentButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "comment")!, for: .normal)
         button.tintColor = .black
@@ -62,7 +63,7 @@ class FeedCell: UICollectionViewCell {
         return button
     }()
     
-    private lazy var shareButton: UIButton = {
+    lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "send2")!, for: .normal)
         button.tintColor = .black
@@ -151,7 +152,8 @@ class FeedCell: UICollectionViewCell {
     
     @objc
     func didTapLikeButton(sender: UIButton) {
-        print("DEBUG: did tap like")
+        guard let viewModel else { return }
+        delegate?.cell(self, didLike: viewModel.post)
     }
     
     @objc
@@ -173,7 +175,9 @@ class FeedCell: UICollectionViewCell {
         postImageView.sd_setImage(with: viewModel.imageUrl)
         profileImageView.sd_setImage(with: viewModel.userProfileImageUrl)
         usernameButton.setTitle(viewModel.user, for: .normal)
-        likeLabel.text = viewModel.likeslabelString 
+        likeLabel.text = viewModel.likeslabelString
+        likeButton.tintColor = viewModel.likeButtonTintColor
+        likeButton.setImage(viewModel.likeButtonImage, for: .normal)
     }
 
     func configureActionButtons() {
