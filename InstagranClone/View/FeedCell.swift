@@ -175,7 +175,9 @@ class FeedCell: UICollectionViewCell {
         postImageView.sd_setImage(with: viewModel.imageUrl)
         profileImageView.sd_setImage(with: viewModel.userProfileImageUrl)
         usernameButton.setTitle(viewModel.user, for: .normal)
-        likeLabel.text = viewModel.likeslabelString 
+        likeLabel.text = viewModel.likeslabelString
+        likeButton.tintColor = viewModel.likeButtonTintColor
+        likeButton.setImage(viewModel.likeButtonImage, for: .normal)
     }
 
     func configureActionButtons() {
@@ -185,10 +187,5 @@ class FeedCell: UICollectionViewCell {
         
         addSubview(stackView)
         stackView.anchor(top: postImageView.bottomAnchor, width: 120, height: 50)
-    }
-    
-    func setLikeState(_ state: Bool) {
-        likeButton.isSelected = state
-        likeButton.tintColor = likeButton.isSelected ? .red : .black
     }
 }

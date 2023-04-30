@@ -12,7 +12,11 @@ private let reuseIdentifier = "Cell"
 class FeedController: UICollectionViewController {
     
     // MARK: - Lifecycle
-    private var posts = [Post]()
+    private var posts = [Post]() {
+        didSet {
+            collectionView.reloadData() 
+        }
+    }
     var post: Post?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +53,17 @@ class FeedController: UICollectionViewController {
         PostService.fetchPosts { posts in
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
-            self.collectionView.reloadData()
+            self.checkIfUserLikedPosts()
+        }
+    }
+    
+    func checkIfUserLikedPosts() {
+        self.posts.forEach { post in
+            PostService.checkIfUserLikedPost(post: post) { didLike in
+                if let index = self.posts.firstIndex(where: { $0.postId == post.postId }) {
+                    self.posts[index].didLike = didLike
+                }
+            }
         }
     }
     
@@ -118,13 +132,15 @@ extension FeedController: FeedCellDelegate {
         cell.viewModel?.post.didLike.toggle()
         if post.didLike {
             PostService.unlikePost(post: post) { _ in
-                button.setImage(UIImage(named: "like_selected")!, for: .normal)
-                cell.likeButton.tintColor = .red
+                cell.likeButton.setImage(UIImage(named: "like_unselected")!, for: .normal)
+                cell.likeButton.tintColor = .black
+                cell.viewModel?.post.likes = post.likes - 1
             }
         } else {
             PostService.likePost(post: post) { _ in
-                cell.likeButton.tintColor = .black
-                button.setImage(UIImage(named: "like_unselected")!, for: .normal)
+                cell.likeButton.tintColor = .red
+                cell.likeButton.setImage(UIImage(named: "like_selected")!, for: .normal)
+                cell.viewModel?.post.likes = post.likes + 1
             }
         }
     }
