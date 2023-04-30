@@ -54,7 +54,7 @@ class FeedController: UICollectionViewController {
     }
     
     // MARK: - Helpers
-
+    
     func configureUI() {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -119,7 +119,10 @@ extension FeedController: FeedCellDelegate {
         if post.didLike {
             print("DEBUG: did tap unlike")
         } else {
-            print("DEBUG: did tap like")
+            PostService.likePost(post: post) { _ in
+                cell.likeButton.setImage(UIImage(named: "like_selected")!, for: .normal)
+                cell.likeButton.tintColor = .red
+            }
         }
     }
 }
