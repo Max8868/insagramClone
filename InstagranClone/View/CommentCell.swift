@@ -8,8 +8,11 @@
 import UIKit
 
 class CommentCell: UICollectionViewCell {
-    
+     
     //MARK: - Properties
+    private var username: String = ""
+    private var commentText: String = ""
+      
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -18,10 +21,10 @@ class CommentCell: UICollectionViewCell {
         return iv
     }()
     
-    private let commentLabel: UILabel = {
+    private lazy var commentLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "Joker ", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSMutableAttributedString(string: "Some test Comment for now",
+        let attributedText = NSMutableAttributedString(string: "\(self.username) ", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSMutableAttributedString(string: self.commentText,
                                                         attributes: [.font: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         return label
@@ -43,5 +46,11 @@ class CommentCell: UICollectionViewCell {
     @available (*, unavailable)
     required init?(coder: NSCoder) {
         return nil
+    }
+    
+    func setup(_ comment: Comment) {
+        self.username = comment.username
+        self.commentText = comment.commentText
+        //profileImageView.sd_setImage(with: comment.profileImageUrl)
     }
 }

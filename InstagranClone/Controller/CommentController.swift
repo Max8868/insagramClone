@@ -20,7 +20,7 @@ class CommentController: UICollectionViewController {
     }()
     
     private let post: Post
-    
+    private var comments = [Comment]()
     // MARK: - Lifecycle
     
     init(post: Post) {
@@ -36,6 +36,7 @@ class CommentController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        fetchComments()
     }
     
     override var inputView: UIView? {
@@ -56,6 +57,15 @@ class CommentController: UICollectionViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    // MARK: - API
+    
+    func fetchComments() {
+        CommentService.fetchComments(forPost: post.postId) {[weak self] comments in
+            self?.comments = comments
+            self?.collectionView.reloadData()
+        }
+    }
+    
     // MARK: - Helpers
     func configureCollectionView() {
         collectionView.backgroundColor = .white
@@ -68,12 +78,14 @@ class CommentController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource
 extension CommentController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return comments.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-          return cell
+        guard let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CommentCell
+        else { return UICollectionViewCell() }
+        cell.setup(comments[indexPath.row])
+        return cell
     }
 }
 
