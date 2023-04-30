@@ -9,6 +9,7 @@ import UIKit
 
 protocol FeedCellDelegate: AnyObject {
     func cell(_ cell: FeedCell, wantsShowComments post: Post)
+    func cell(_ cell: FeedCell, didLike post: Post)
 }
 
 class FeedCell: UICollectionViewCell {
@@ -151,7 +152,8 @@ class FeedCell: UICollectionViewCell {
     
     @objc
     func didTapLikeButton(sender: UIButton) {
-        print("DEBUG: did tap like")
+        guard let viewModel else { return }
+        delegate?.cell(self, didLike: viewModel.post)
     }
     
     @objc
