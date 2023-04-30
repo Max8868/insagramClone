@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FeedCellDelegate: AnyObject {
+    func cell(_ cell: FeedCell, wantsShowComments post: Post)
+}
+
 class FeedCell: UICollectionViewCell {
     
     // MARK: - Proprities
@@ -14,6 +18,8 @@ class FeedCell: UICollectionViewCell {
     var viewModel: PostViewModel? {
         didSet { configure() }
     }
+    
+    weak var delegate: FeedCellDelegate?
     
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
@@ -52,7 +58,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "comment")!, for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapCommentButton(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapCommentsButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -131,8 +137,9 @@ class FeedCell: UICollectionViewCell {
                             paddingLeft: 8)
     }
     
+    @available (*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     // MARK: - Actions
@@ -148,8 +155,9 @@ class FeedCell: UICollectionViewCell {
     }
     
     @objc
-    func didTapCommentButton(sender: UIButton) {
-        print("DEBUG: did tap comment")
+    func didTapCommentsButton(sender: UIButton) {
+        guard let viewModel else { return }
+        delegate?.cell(self, wantsShowComments: viewModel.post)
     }
     
     @objc

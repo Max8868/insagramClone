@@ -131,8 +131,9 @@ class ProfileHeader: UICollectionReusableView {
         bottomDivider.anchor(top: bottomStack.bottomAnchor, left: leftAnchor, right: rightAnchor, height: 0.5)
     }
     
+    @available (*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     //MARK: - Actions
